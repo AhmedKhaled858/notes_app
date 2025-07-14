@@ -50,7 +50,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 30), () {
+    Future.delayed(const Duration(seconds: 5), () {
       GoRouter.of(context).go(AppRouter.KNoteView);
     });
   }
