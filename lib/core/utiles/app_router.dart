@@ -1,0 +1,27 @@
+import 'package:go_router/go_router.dart';
+import 'package:note_app/features/notes/presentation/views/notes_view.dart';
+
+import '../../features/splash/presentation/views/splash_view.dart';
+
+class AppRouter {
+  static const KSplashView = '/';
+  static const KNoteView = '/notes';
+
+  static final router =GoRouter(
+    initialLocation: KSplashView,
+    routes: [
+      GoRoute(
+        path: KSplashView,
+        builder: (context, state) {
+          return const SplashView();
+        },
+      ),
+      GoRoute(
+        path: KNoteView,
+        builder: (context, state) {
+          return const NotesView();
+        },
+      ),
+    ],
+  );
+}
