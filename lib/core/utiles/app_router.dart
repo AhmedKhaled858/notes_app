@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:go_router/go_router.dart';
 import 'package:note_app/features/notes/presentation/views/notes_view.dart';
 
@@ -7,7 +9,7 @@ class AppRouter {
   static const KSplashView = '/';
   static const KNoteView = '/notes';
 
-  static final router =GoRouter(
+  static final router = GoRouter(
     initialLocation: KSplashView,
     routes: [
       GoRoute(
