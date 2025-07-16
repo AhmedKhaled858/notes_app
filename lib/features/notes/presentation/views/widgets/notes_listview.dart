@@ -6,10 +6,16 @@ class NotesListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => const NoteItem(),
-        childCount: 10,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: CustomScrollView(
+        slivers: [ SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => const NoteItem(),
+            childCount: 10,
+          ),
+        ),],
+        
       ),
     );
   }
