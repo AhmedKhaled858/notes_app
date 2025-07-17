@@ -18,15 +18,15 @@ class CustomTextField extends StatelessWidget {
               labelStyle: TextStyle(color:KPrimaryColor),
               hintStyle: TextStyle(color:KPrimaryColor.withOpacity(0.5)),
               border: OutlineInputBorder(
-                borderSide: const BorderSide(color: KPrimaryColor),
+             //   borderSide: const BorderSide(color: KPrimaryColor),
                 borderRadius: BorderRadius.circular(8),
               ),
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color:KPrimaryColor),
+                borderSide: const BorderSide(color:Colors.grey),
                 borderRadius: BorderRadius.circular(8),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color:KPrimaryColor),
+               borderSide: const BorderSide(color:Colors.grey),
                 borderRadius: BorderRadius.circular(8),
               ),  
             ),

@@ -1,21 +1,23 @@
-// ignore_for_file: avoid_print, deprecated_member_use
-
 import 'package:flutter/material.dart';
 
-class CustomSearchIcon extends StatelessWidget {
-  const CustomSearchIcon({super.key});
+class CustomAppBarIcon extends StatelessWidget {
+  final IconData icon; // 👈 Add this line
+
+  const CustomAppBarIcon({
+    super.key,
+    required this.icon, // 👈 Require the icon
+  });
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white.withOpacity(0.05),
       borderRadius: BorderRadius.circular(13),
-      elevation: 6, // optional: Material elevation for shadow
+      elevation: 6,
       child: InkWell(
         borderRadius: BorderRadius.circular(13),
         onTap: () {
-          // Do your search logic here
-          print("Search icon clicked");
+          print("$icon icon clicked"); // dynamic print
         },
         child: Container(
           height: 46,
@@ -29,11 +31,11 @@ class CustomSearchIcon extends StatelessWidget {
               ),
             ],
           ),
-          child: const Center(
+          child: Center(
             child: Icon(
-              Icons.search,
+              icon, // 👈 Use the passed icon here
               size: 28,
-              color: Colors.white, // icon color
+              color: Colors.white,
             ),
           ),
         ),

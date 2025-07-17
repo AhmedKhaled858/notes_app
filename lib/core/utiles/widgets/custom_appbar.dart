@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/core/utiles/widgets/custom_search_icon.dart';
+import 'package:note_app/core/utiles/widgets/custom_appbar_icon.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key});
-
+  const CustomAppbar({super.key, required this.title, required this.icon});
+  final String title ;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -11,10 +12,10 @@ class CustomAppbar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 14),
         child: Row(
           children: [
-          Text('Notes', style: Theme.of(context).textTheme.headlineLarge),
+          Text(title, style: Theme.of(context).textTheme.headlineLarge),
           Spacer(),
           //IconButton(onPressed: (){}, icon: const Icon(Icons.search, size: 30)),
-          CustomSearchIcon(),
+          CustomAppBarIcon(icon: icon),
         ],),
       ),
     );
