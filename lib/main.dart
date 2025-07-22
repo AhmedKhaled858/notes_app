@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/utiles/app_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-void main() {
+import 'core/utiles/constant.dart';
+import 'features/notes/data/models/note_model.g.dart';
+
+void main()async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
+  Hive.openBox(kNotesBox);
+
   runApp(const NotesApp());
 }
 class NotesApp extends StatelessWidget {

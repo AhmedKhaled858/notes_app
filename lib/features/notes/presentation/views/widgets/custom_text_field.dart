@@ -4,13 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/utiles/constant.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.labelText,  this.maxLines, this.hintText});
+  const CustomTextField({super.key, required this.labelText,  this.maxLines, this.hintText, this.onSaved});
   final String? labelText;
   final String? hintText;
   final int? maxLines;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return  TextFormField(
+            onSaved: onSaved,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter $labelText';
+              }
+              return null;
+            },
             maxLines:maxLines??1,
             decoration: InputDecoration(
               labelText: labelText,
