@@ -1,10 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/notes/presentation/views/widgets/custom_add_button.dart';
 import 'package:note_app/features/notes/presentation/views/widgets/custom_text_field.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import '../../../data/models/note_model.dart';
+import '../../manger/cubits/add_note_cubit/add_note_cubit.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
@@ -45,17 +46,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                // ✅ Show top success message
-                showTopSnackBar(
-                  Overlay.of(context),
-                  const CustomSnackBar.success(
-                    message: "Note created successfully!",
-                  ),
+                var noteModel= NoteModel(
+                  title: title!,
+                  subtitle: subtitle!,
+                  date: DateTime.now().toIso8601String(),
                 );
-
-                Future.delayed(const Duration(milliseconds: 500), () {
-                  Navigator.pop(context);
-                });
+                BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;

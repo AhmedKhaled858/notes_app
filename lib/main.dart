@@ -6,12 +6,15 @@ import 'package:note_app/features/notes/presentation/manger/cubits/add_note_cubi
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'core/utiles/constant.dart';
+import 'core/utiles/simple_bloc_observer.dart';
+import 'features/notes/data/models/note_model.dart';
 import 'features/notes/data/models/note_model.g.dart';
 
 void main()async {
   await Hive.initFlutter();
+  Bloc.observer = SimpleBlocObserver();
   Hive.registerAdapter(NoteModelAdapter());
-  Hive.openBox(kNotesBox);
+  await Hive.openBox<NoteModel>(kNotesBox);
 
   runApp(const NotesApp());
 }
