@@ -14,24 +14,26 @@ class AddNoteButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 16,
-        right: 16,
-        bottom: MediaQuery.of(context).viewInsets.bottom + 25,
-        top: 25,
-      ),
-     
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: 16,
+          right: 16,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 25,
+          top: 25,
+        ),
+
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
-                  showTopSnackBar(
-                      Overlay.of(context),
-                      const CustomSnackBar.success(
-                        message: "Note created successfully!",
-                      ),
-                    );
+              showTopSnackBar(
+                Overlay.of(context),
+                const CustomSnackBar.success(
+                  message: "Note created successfully!",
+                ),
+              );
             } else if (state is AddNoteFailure) {
               showTopSnackBar(
                 Overlay.of(context),
@@ -51,7 +53,7 @@ class AddNoteButtonSheet extends StatelessWidget {
             );
           },
         ),
-      
+      ),
     );
   }
 }
