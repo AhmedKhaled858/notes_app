@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/utiles/app_router.dart';
-import 'package:note_app/features/notes/presentation/manger/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'core/utiles/constant.dart';

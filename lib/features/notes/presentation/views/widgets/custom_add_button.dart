@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/utiles/constant.dart';
 
 class CustomAddButton extends StatelessWidget {
-  const CustomAddButton({super.key, this.onTap});
-final void Function()? onTap;
+  const CustomAddButton({super.key, this.onTap,this.isLoading=false});
+  final bool isLoading;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -16,12 +17,20 @@ final void Function()? onTap;
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Text("Add",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              )),
+          child: isLoading
+              ? SizedBox(
+                height: 24,
+                width: 24,
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                ),
+              )
+              : Text("Add",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  )),
         ),
       ),
     );
