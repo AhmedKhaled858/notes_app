@@ -48,7 +48,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
               return CustomAddButton(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
-                      String formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
+                  String formattedDate = DateFormat(
+                    'dd-MM-yyyy',
+                  ).format(DateTime.now());
 
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();

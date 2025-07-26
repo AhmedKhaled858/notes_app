@@ -15,18 +15,19 @@ class NotesCubit extends Cubit<NotesCubitState> {
     try {
       var notesBox = Hive.box<NoteModel>(kNotesBox);
       notes = notesBox.values.toList();
+      emit(NotesSuccess());
     } catch (e) {
       emit(NotesFailure(e.toString()));
     }
   }
 
   // ✅ Getter to get the current number of notes
-  int get notesCount {
-    if (state is NotesSuccess) {
-      return (state as NotesSuccess).notes.length;
-    }
-    return 0;
-  }
+  // int get notesCount {
+  //   if (state is NotesSuccess) {
+  //     return (state as NotesSuccess).notes.length;
+  //   }
+  //   return 0;
+  // }
 
   // ✅ Optional: Getter to return notes directly
   // List<NoteModel> get notes {
