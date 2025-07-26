@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_app/core/utiles/app_router.dart';
+import 'package:note_app/features/notes/data/models/note_model.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -32,9 +33,9 @@ class NoteItem extends StatelessWidget {
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children:  [
                           Text(
-                            "Flutter Note",
+                            note.title,
                             style: TextStyle(
                              // color: Colors.black,
                               fontSize: 24,
@@ -43,7 +44,7 @@ class NoteItem extends StatelessWidget {
                           ),
                           SizedBox(height: 16),
                           Text(
-                            "build your first flutter app, using flutter and dart",
+                            note.subtitle,
                             maxLines: 2,
                             style: TextStyle(
                              // color: Colors.black54,
@@ -66,10 +67,10 @@ class NoteItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.only(right: 8.0,top: 16),
                   child: Text(
-                    "May 2022",
+                   note.date,
                     style: TextStyle(
                    //   color: Colors.black54,
                       fontSize: 12,
