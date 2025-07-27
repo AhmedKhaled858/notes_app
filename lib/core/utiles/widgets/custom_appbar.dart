@@ -7,12 +7,13 @@ class CustomAppbar extends StatelessWidget {
     required this.title,
     required this.icon,
     this.iconButton,
+    required this.onIconTap,
   });
 
   final String title;
   final IconData icon;
   final IconButton? iconButton;
-
+  final void Function()? onIconTap;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,7 +27,9 @@ class CustomAppbar extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const Spacer(),
-            CustomAppBarIcon(icon: icon),
+            CustomAppBarIcon(icon: icon,
+              onTap:onIconTap,
+            ),
           ],
         ),
       ),

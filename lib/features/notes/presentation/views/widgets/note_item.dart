@@ -17,7 +17,7 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).go(AppRouter.KEditNoteView);
+        GoRouter.of(context).go(AppRouter.KEditNoteView,  extra: note,);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),

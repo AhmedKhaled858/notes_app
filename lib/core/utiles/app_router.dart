@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:note_app/features/notes/presentation/views/edit_note_view.dart';
 import 'package:note_app/features/notes/presentation/views/notes_view.dart';
 
+import '../../features/notes/data/models/note_model.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
@@ -29,7 +30,9 @@ class AppRouter {
       GoRoute(
         path: KEditNoteView,
         builder: (context, state) {
-          return const EditNoteView();
+          return EditNoteView(
+            note: state.extra as NoteModel,
+          );
         },
       ),
     ],

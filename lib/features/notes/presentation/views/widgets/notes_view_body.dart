@@ -23,10 +23,12 @@ class _NotesViewBodyState extends State<NotesViewBody> {
     return SafeArea(
       child: Column(
         children: [
-        const CustomAppbar(title: "Notes", icon: Icons.search),
+         CustomAppbar(
+          onIconTap: (){},
+          title: "Notes", icon: Icons.search),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+          child:const Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 16),
             child: NotesListview(),
           ),
         ),

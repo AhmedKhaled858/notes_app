@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomAppBarIcon extends StatelessWidget {
   final IconData icon; // 👈 Add this line
-
+  final void Function()? onTap; // 👈 Add this line
   const CustomAppBarIcon({
     super.key,
     required this.icon, // 👈 Require the icon
+    required this.onTap, // 👈 Require the onTap callback
   });
 
   @override
@@ -16,9 +17,7 @@ class CustomAppBarIcon extends StatelessWidget {
       elevation: 6,
       child: InkWell(
         borderRadius: BorderRadius.circular(13),
-        onTap: () {
-          print("$icon icon clicked"); // dynamic print
-        },
+        onTap: onTap,
         child: Container(
           height: 46,
           width: 45,
