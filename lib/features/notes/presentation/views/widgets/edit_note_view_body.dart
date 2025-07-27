@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_app/features/notes/data/models/note_model.dart';
 import 'package:note_app/features/notes/presentation/views/widgets/custom_text_field.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../../../core/utiles/widgets/custom_appbar.dart';
+import '../../manger/cubits/notes_cubit/cubit/notes_cubit.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   const EditNoteViewBody({super.key, required this.note});
@@ -26,6 +28,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.title = title ?? widget.note.title;
               widget.note.subtitle = content ?? widget.note.subtitle;
               widget.note.save();
+              BlocProvider.of<NotesCubit>(context).fetchNotes();
                 showTopSnackBar(
               Overlay.of(context),
               const CustomSnackBar.success(
