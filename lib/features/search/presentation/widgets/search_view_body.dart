@@ -1,10 +1,8 @@
 // search_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:note_app/core/utiles/constant.dart';
-import 'package:note_app/features/notes/presentation/views/widgets/custom_text_field.dart';
 import 'package:note_app/features/search/presentation/manger/cubits/cubit/search_cubit.dart';
+import 'package:note_app/features/search/presentation/widgets/search_bar.dart';
 import '../../../notes/data/models/note_model.dart';
 import '../../../notes/presentation/views/widgets/note_item.dart';
 
@@ -16,11 +14,7 @@ class SearchViewBody extends StatefulWidget {
 }
 
 class _SearchViewBodyState extends State<SearchViewBody> {
-  final TextEditingController _searchController = TextEditingController();
-
-  void _onSearchChanged(String? query) {
-    context.read<SearchCubit>().searchNotes(query ?? '');
-  }
+ 
 
   late SearchCubit myCubit;
 
@@ -42,36 +36,7 @@ Widget build(BuildContext context) {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: CustomTextField(
-                  controller: _searchController,
-                 // autofocus: false,
-                  labelText: "Search",
-                  hintText: "Search notes...",
-                  onChanged: _onSearchChanged,
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () {
-                    if (GoRouter.of(context).canPop()) {
-                context.pop();
-              } else {
-                context.go('/notes');
-              }
-                },
-                child: const Text(
-                  'Cancel',
-                  style: TextStyle(
-                    color: KPrimaryColor,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          SearchAppBar(),
           const SizedBox(height: 16),
           // const Align(
           //   alignment: Alignment.centerLeft,
