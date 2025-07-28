@@ -11,12 +11,7 @@ class SearchCubit extends Cubit<List<NoteModel>> {
   SearchCubit() : super([]);
 
     final notesBox = Hive.box<NoteModel>(kNotesBox);
-  List<NoteModel> allNotes = [];
-  void fetchNotes() {
-    allNotes = notesBox.values.toList();
-    emit(allNotes);
-  }
-  
+  List<NoteModel> allNotes = [];  
   void searchNotes(String query) {
     if (query.isEmpty) {
       emit([]); // Return empty list when query is cleared
