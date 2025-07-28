@@ -1,15 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_app/core/utiles/app_router.dart';
 import 'package:note_app/features/notes/data/models/note_model.dart';
 import 'package:note_app/features/notes/presentation/views/widgets/delete_icon.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
-
-import '../../manger/cubits/notes_cubit/cubit/notes_cubit.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
@@ -73,7 +68,7 @@ class NoteItem extends StatelessWidget {
                     SizedBox(
                       height: 40,
                       width: 40,
-                      child: DeleteIcon(note:note)
+                      child: DeleteIcon(note: note),
                     ),
                   ],
                 ),

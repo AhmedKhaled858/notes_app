@@ -26,7 +26,7 @@ void didChangeDependencies() {
 
 @override
 void dispose() {
-  myCubit.clearSearch(); // ✅ use it here without context
+  myCubit.clearSearch();  
   super.dispose();
 }
 @override
