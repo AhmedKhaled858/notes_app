@@ -5,12 +5,14 @@ import 'package:note_app/features/notes/presentation/views/edit_note_view.dart';
 import 'package:note_app/features/notes/presentation/views/notes_view.dart';
 
 import '../../features/notes/data/models/note_model.dart';
+import '../../features/search/presentation/search_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
   static const KSplashView = '/';
   static const KNoteView = '/notes';
   static const KEditNoteView = '/editnote';
+  static const KSearchView = '/search';
 
   static final router = GoRouter(
     initialLocation: KSplashView,
@@ -33,6 +35,12 @@ class AppRouter {
           return EditNoteView(
             note: state.extra as NoteModel,
           );
+        },
+      ),
+       GoRoute(
+        path: KSearchView,
+        builder: (context, state) {
+          return const SearchView();
         },
       ),
     ],

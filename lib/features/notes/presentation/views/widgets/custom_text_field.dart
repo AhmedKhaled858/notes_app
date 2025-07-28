@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/utiles/constant.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key,  this.labelText,  this.maxLines, this.hintText, this.onSaved, this.onChanged});
+  const CustomTextField({super.key,  this.labelText,  this.maxLines, this.hintText, this.onSaved, this.onChanged, this.controller,this.autofocus=false});
   final String? labelText;
   final String? hintText;
   final int? maxLines;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
+  final TextEditingController? controller;
+  final bool autofocus;
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
+            controller: controller,
             onChanged:onChanged ,
+            autofocus: autofocus,
             onSaved: onSaved,
             validator: (value) {
               if (value == null || value.isEmpty) {

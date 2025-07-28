@@ -8,32 +8,15 @@ import '../../../../../data/models/note_model.dart';
 
 part 'notes_cubit_state.dart';
 
-class NotesCubit extends Cubit<NotesCubitState> {
-  NotesCubit() : super(NotesCubitInitial());
-  List<NoteModel>? notes;
+class NotesCubit extends Cubit<List<NoteModel>> {
+  NotesCubit() : super([]);
+
+  final notesBox = Hive.box<NoteModel>(kNotesBox);
+  List<NoteModel> allNotes = [];
+
   void fetchNotes() {
-    try {
-      var notesBox = Hive.box<NoteModel>(kNotesBox);
-      notes = notesBox.values.toList();
-      emit(NotesSuccess());
-    } catch (e) {
-      emit(NotesFailure(e.toString()));
-    }
+    allNotes = notesBox.values.toList();
+    emit(allNotes);
   }
 
-  // ✅ Getter to get the current number of notes
-  // int get notesCount {
-  //   if (state is NotesSuccess) {
-  //     return (state as NotesSuccess).notes.length;
-  //   }
-  //   return 0;
-  // }
-
-  // ✅ Optional: Getter to return notes directly
-  // List<NoteModel> get notes {
-  //   if (state is NotesSuccess) {
-  //     return (state as NotesSuccess).notes;
-  //   }
-  //   return [];
-  // }
 }

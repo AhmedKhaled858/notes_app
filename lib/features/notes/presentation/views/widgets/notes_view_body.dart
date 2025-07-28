@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:note_app/core/utiles/widgets/custom_appbar.dart';
 import 'package:note_app/features/notes/presentation/views/widgets/notes_listview.dart';
 
+import '../../../../../core/utiles/app_router.dart';
 import '../../manger/cubits/notes_cubit/cubit/notes_cubit.dart';
 
 class NotesViewBody extends StatefulWidget {
@@ -24,7 +26,9 @@ class _NotesViewBodyState extends State<NotesViewBody> {
       child: Column(
         children: [
          CustomAppbar(
-          onIconTap: (){},
+          onIconTap: (){
+            GoRouter.of(context).go(AppRouter.KSearchView);
+          },
           title: "Notes", icon: Icons.search),
         Expanded(
           child:const Padding(
@@ -36,3 +40,5 @@ class _NotesViewBodyState extends State<NotesViewBody> {
     );
   }
 }
+
+
