@@ -49,12 +49,7 @@ class DeleteIcon extends StatelessWidget {
                     ), // Use parent context here too
                     const CustomSnackBar.success(
                       message: "Note deleted successfully!",
-                      backgroundColor: Color.fromARGB(
-                        255,
-                        13,
-                        243,
-                        16,
-                      ),
+                   
                     ),
                   );
                 },
